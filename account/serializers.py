@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
+from phonenumber_field.serializerfields import PhoneNumberField
+from .models import AccountDetails
 
 class LoginSerializer(serializers.Serializer):
     email = serializers.EmailField()
@@ -26,4 +28,28 @@ class RegistrationSerializer(serializers.ModelSerializer):
         user.set_password(password)
         user.save()
 
+        AccountDetails.objects.create(user=user)
         return user
+
+class ResetPasswordSerializer(serializers.Serializer):
+    new_password = serializers.CharField(
+        write_only=True,
+    )
+    confirm_password = serializers.CharField(write_only=True, required=True)
+
+class PhoneNumberSerializer(serializers.Serializer):
+    phone_number = PhoneNumberField(region="NG")
+
+class AccountSerializer(serializers.ModelSerializer):
+    # user_profile = UserProfileSerializer(required=False)
+    phone_number = PhoneNumberField(region="NG", required=False)
+
+    class Meta:
+        model = get_user_model()
+        fields = ("id","name", "email", "phone_number")
+        read_only_fields = ['email']
+
+class UserDetailsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AccountDetails
+        fields = "__all__"

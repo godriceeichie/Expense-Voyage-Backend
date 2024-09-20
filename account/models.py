@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
-# from phonenumber_field.modelfields import PhoneNumberField
+from phonenumber_field.modelfields import PhoneNumberField
 
 class AccountManager(BaseUserManager):
     def create_user(self, email, name, password=None, **kwargs):
@@ -38,6 +38,7 @@ class AccountManager(BaseUserManager):
 class Account(AbstractBaseUser):
     email = models.EmailField(null=False, blank=False, unique=True)
     name = models.CharField(max_length=255, blank=False, null=False)
+    phone_number = PhoneNumberField(null=True, blank=True)
     
     is_admin = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=True)
