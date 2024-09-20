@@ -145,12 +145,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #     "http://localhost:5173",
 #     "http://localhost:5174",
 # ]
-CORS_ALLOW_ALL_ORIGINS = False
+# CORS_ALLOW_ALL_ORIGINS = False
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://localhost:5174",
-    "https://dd47-105-116-7-64.ngrok-free.app",  # Your Ngrok URL
+    "https://expense-voyage-frontend.vercel.app",  # Your Ngrok URL
 ]
 
 CORS_ALLOW_CREDENTIALS = True
