@@ -158,14 +158,11 @@ CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
     "http://localhost:5174",
-    "https://dd47-105-116-7-64.ngrok-free.app",  # Your Ngrok URL
+    "https://expense-voyage-frontend.vercel.app",  # Your Ngrok URL
 ]
 CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_HTTP_ONLY = True
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:5173",
-    "http://localhost:5174",
-]
+
 CORS_EXPOSE_HEADERS = ["Content-Type", "X-CSRFToken"]
 CORS_ALLOW_HEADERS = (
     *default_headers,
