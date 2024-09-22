@@ -39,3 +39,8 @@ class ItinerarySerializer(serializers.ModelSerializer):
         model = models.Itinerary
         fields = ['id', 'title', 'user', 'created_at', 'updated_at', 'items']
         read_only_fields = ['created_at', 'updated_at', 'user']
+
+class DestinationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Destination
+        fields = '__all__'

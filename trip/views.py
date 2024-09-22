@@ -1,4 +1,4 @@
-from rest_framework import generics, permissions,response
+from rest_framework import generics, permissions,response, status
 from  . import models,serializers
 from django.shortcuts import get_object_or_404
 
@@ -154,8 +154,16 @@ class ItineraryItemDetailView(generics.RetrieveUpdateDestroyAPIView):
                 else:
                    activity = models.Activity.objects.filter(pk=serializer_class.data["activity"]["id"]).update(**request_body) 
         
-         # Save the ItineraryItem with the updated lodge/transport/activity
-        # itinerary_item.save(transport=transport)
+class CreateListDestinationView(generics.ListCreateAPIView):
+    queryset = models.Destination.objects.all()
+    permission_classes = [permissions.IsAdminUser]
+    serializer_class = serializers.DestinationSerializer
 
-        # Save the serializer data (other fields like the type)
-        # serializer_class.save(itinerary=itinerary_item.itinerary, lodge=itinerary_item.lodge, transport=itinerary_item.transport, activity=itinerary_item.activity)
+    # def get(self, request, *args, **kwargs):
+    #     # Check if user is an admin
+    #     if not request.user.is_staff:
+    #         return response.Response(
+    #             {"detail": "You do not have permission to perform this action."},
+    #             status=status.HTTP_403_FORBIDDEN
+    #         )
+    #     return super().get(request, *args, **kwargs)

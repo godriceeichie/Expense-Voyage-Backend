@@ -13,4 +13,6 @@ urlpatterns = [
     # Itinerary Item endpoints
     path('itinerary-items/<int:pk>/', views.ItineraryItemDetailView.as_view(), name='itinerary-item-detail'),
     path('<int:itinerary_pk>/itinerary-items/', views.ItineraryItemListCreateView.as_view(), name='itinerary-item-list-create'),
+
+    path('destination/', views.CreateListDestinationView.as_view())
 ]

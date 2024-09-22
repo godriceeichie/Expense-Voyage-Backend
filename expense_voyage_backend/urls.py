@@ -24,7 +24,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/auth/", include("account.urls")),
     path("api/email/", include("send_email.urls")),
-    path("api/trip/", include("trip.urls"))
+    path("api/trip/", include("trip.urls")),
+    path("api/expense/", include("expense.urls"))
 ]
 
 if settings.DEBUG:

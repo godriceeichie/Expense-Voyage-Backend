@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure--!tc-yh^q+-!(2ri+oeo4*_p81r&4b*lk#qu0=@7op!r4gfmyx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -53,7 +53,8 @@ INSTALLED_APPS = [
     # Local apps
     'account.apps.AccountConfig',
     'trip.apps.TripConfig',
-    'send_email.apps.SendEmailConfig'
+    'send_email.apps.SendEmailConfig',
+    'expense.apps.ExpenseConfig'
 ]
 
 MIDDLEWARE = [

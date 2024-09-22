@@ -3,18 +3,20 @@ from django.contrib.auth import get_user_model
 
 # Create your models here.
 Account = get_user_model()
+
+class Destination(models.Model):
+    city = models.CharField(max_length=250)
+    state = models.CharField(max_length=250)
+    country = models.CharField(max_length=250)
+
 class Trip(models.Model):
     trip_name = models.CharField(max_length=255)
-    destination = models.CharField(max_length=300)
+    # destination = models.CharField(max_length=300)
+    destination = models.ForeignKey(Destination, related_name="trip_destination", on_delete=models.CASCADE)
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
     budget = models.DecimalField(max_digits=10, decimal_places=2)
     user = models.ForeignKey(Account, related_name="user_trip", on_delete=models.CASCADE)
-
-class ExpenseCategory(models.Model):
-    category_name = models.CharField(max_length=75)
-    user = models.ForeignKey(Account, related_name="user_expense_category", on_delete=models.CASCADE)
-
 
 class Lodge(models.Model):
     location = models.CharField(max_length=255)
